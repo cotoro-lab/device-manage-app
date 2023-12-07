@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Link } from "react-router-dom";
+import { HStack, VStack } from '@chakra-ui/react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    return (
+        <>
+            <div className="App">
+                <VStack>
+                    <p>Device Magement App</p>
+                    <Link to="/device-loan-mg-list">貸出状況管理</Link>
+                    <Link to="/device-mst-list">端末情報管理</Link>
+                    <Link to="/user-mst-list">ユーザー情報管理</Link>
+                </VStack>
+            </div>
+        </>
+    );
 }
 
 export default App;

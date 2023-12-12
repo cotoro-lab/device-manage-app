@@ -50,9 +50,9 @@ export const Header = (props: Props) => {
                             spacing={3}
                             align='stretch'
                         >
-                            <Link to="/device-loan-mg-list">貸出状況管理画面</Link>
-                            <Link to="/device-mst-list">端末管理画面</Link>
-                            <Link to="/user-mst-list">ユーザー管理画面</Link>
+                            <Link to="/device-loan/list">貸出状況管理画面</Link>
+                            <Link to="/device/list">端末管理画面</Link>
+                            <Link to="/user/list">ユーザー管理画面</Link>
                         </VStack>
                     </DrawerBody>
                 </DrawerContent>

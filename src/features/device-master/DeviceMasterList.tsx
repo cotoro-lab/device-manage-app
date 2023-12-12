@@ -4,6 +4,7 @@ import {
     Box,
     Button
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { DeviceList } from "../../components/List/DeviceList";
@@ -25,7 +26,11 @@ export const DeviceMasterList = () => {
                     mx="5%"
                     mt="15px"
                 >
-                    <Button>新規登録</Button>
+                    <Link to="/device/create">
+                        <Button colorScheme="telegram">
+                            新規登録
+                        </Button>
+                    </Link>
                 </Box>
                 <Box
                     maxW="95%"

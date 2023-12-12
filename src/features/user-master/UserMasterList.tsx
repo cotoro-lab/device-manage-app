@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
     VStack,
     Box,
@@ -26,7 +27,11 @@ export const UserMasterList = () => {
                     mx="5%"
                     mt="15px"
                 >
-                    <Button>新規登録</Button>
+                    <Link to="/user/create">
+                        <Button colorScheme="telegram">
+                            新規登録
+                        </Button>
+                    </Link>
                 </Box>
                 <Box
                     maxW="95%"

@@ -46,7 +46,7 @@ export const UserList = () => {
                         <Tbody>
                             {data.map(item => (
                                 <Tr key={item.id}>
-                                    <Td border="1px solid" borderColor={color}><Button size="xs">選択</Button></Td>
+                                    <Td border="1px solid" borderColor={color}><Button bg={color} size="xs">選択</Button></Td>
                                     <Td border="1px solid" borderColor={color}>{item.user_id}</Td>
                                     <Td border="1px solid" borderColor={color}>{item.user_name}</Td>
                                     <Td border="1px solid" borderColor={color}>{item.user_division}</Td>

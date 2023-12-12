@@ -4,6 +4,7 @@ import {
     Box,
     Button
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 
 import { Header } from "../../components/Header";
@@ -11,7 +12,7 @@ import { DeviceLoanList } from "../../components/List/DeviceLoanList";
 
 const page_title: string = "貸出状況一覧";
 
-export const DeviceLoanManage = () => {
+export const DeviceLoanManageList = () => {
     return (
         <>
             <VStack
@@ -26,7 +27,9 @@ export const DeviceLoanManage = () => {
                     mx="5%"
                     mt="15px"
                 >
-                    <Button>新規登録</Button>
+                    <Link to="/device-loan/create">
+                        <Button colorScheme="telegram">新規登録</Button>
+                    </Link>
                 </Box>
                 <Box
                     maxW="95%"

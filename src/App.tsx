@@ -8,9 +8,9 @@ const App = () => {
             <div className="App">
                 <VStack>
                     <p>Device Magement App</p>
-                    <Link to="/device-loan-mg-list">貸出状況管理</Link>
-                    <Link to="/device-mst-list">端末情報管理</Link>
-                    <Link to="/user-mst-list">ユーザー情報管理</Link>
+                    <Link to="/device-loan/list">貸出状況管理</Link>
+                    <Link to="/device/list">端末情報管理</Link>
+                    <Link to="/user/list">ユーザー情報管理</Link>
                 </VStack>
             </div>
         </>

@@ -8,12 +8,11 @@ import {
 } from "@chakra-ui/react";
 
 import { Header } from "../../components/Header";
-import { useNavigate } from "react-router-dom";
+import { BackButton } from "../../components/Button/BackButton";
 
 const page_title: string = "端末登録画面";
 
 export const CreateDevice = () => {
-    const navigate = useNavigate();
     return (
         <>
             <VStack
@@ -53,7 +52,7 @@ export const CreateDevice = () => {
                             <Input flex="4" type="date"></Input>
                         </HStack>
                         <HStack mt="30px">
-                            <Button colorScheme="red" variant='outline' onClick={() => navigate("/device/list")}>戻る</Button>
+                            <BackButton />
                             <Button colorScheme="telegram" ml="20px">登録</Button>
                         </HStack>
                     </VStack>

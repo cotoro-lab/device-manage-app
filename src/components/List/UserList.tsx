@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
     VStack, HStack,
     Box,
@@ -6,19 +7,14 @@ import {
     , Button
 } from "@chakra-ui/react";
 
+import { getUserData } from "../../types/data/UserData";
 
 
 export const UserList = () => {
     const color = "gray.200";
     // 仮のデータを生成します（実際のデータに置き換えてください）
-    const data = new Array(20).fill(null).map((_, index) => ({
-        id: index,
-        user_id: 10002300000 + index + 1,
-        user_name: `田中太郎 ${index + 1}`,
-        user_division: `田中太郎 ${index + 1}`,
-        tel_num: `080-3333-22${("00" + (index + 1)).slice(-2)}`,
-        mail_address: `hoge@gmail.com${index + 1}`
-    }));
+    const data = getUserData();
+
     return (
         <>
             <Box
@@ -46,7 +42,11 @@ export const UserList = () => {
                         <Tbody>
                             {data.map(item => (
                                 <Tr key={item.id}>
-                                    <Td border="1px solid" borderColor={color}><Button bg={color} size="xs">選択</Button></Td>
+                                    <Td border="1px solid" borderColor={color}>
+                                        <Link to={"/user/detail"}>
+                                            <Button bg={color} size="xs" >選択</Button>
+                                        </Link>
+                                    </Td>
                                     <Td border="1px solid" borderColor={color}>{item.user_id}</Td>
                                     <Td border="1px solid" borderColor={color}>{item.user_name}</Td>
                                     <Td border="1px solid" borderColor={color}>{item.user_division}</Td>

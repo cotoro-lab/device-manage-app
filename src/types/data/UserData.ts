@@ -1,5 +1,5 @@
 // データ型を定義
-type UserData = {
+export type UserData = {
     id: number;
     user_id: number;
     user_name: string;

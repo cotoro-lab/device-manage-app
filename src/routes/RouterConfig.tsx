@@ -32,12 +32,12 @@ export const RouterConfig = () => {
                     {/* DeviceMaster */}
                     <Route path="/device/list" index element={<DeviceMasterList />} />
                     <Route path="/device/create" index element={<CreateDevice />} />
-                    <Route path="/device/create" index element={<DetailDevice />} />
+                    <Route path="/device/detail" index element={<DetailDevice />} />
 
                     {/* UserMaster */}
                     <Route path="/user/list" index element={<UserMasterList />} />
                     <Route path="/user/create" index element={<CreateUser />} />
-                    <Route path="/user/detail" index element={<DetailUser user_id={0} />} />
+                    <Route path="/user/detail" index element={<DetailUser />} />
                 </Routes>
             </BrowserRouter>
         </>

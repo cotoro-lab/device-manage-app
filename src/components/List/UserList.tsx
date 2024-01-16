@@ -43,7 +43,7 @@ export const UserList = () => {
                             {data.map(item => (
                                 <Tr key={item.id}>
                                     <Td border="1px solid" borderColor={color}>
-                                        <Link to={"/user/detail"}>
+                                        <Link to={"/user/detail"} state={{ user_id: item.user_id }}>
                                             <Button bg={color} size="xs" >選択</Button>
                                         </Link>
                                     </Td>

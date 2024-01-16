@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
     VStack, HStack,
     Box,
@@ -6,18 +7,13 @@ import {
     , Button
 } from "@chakra-ui/react";
 
+import { getDeviceData } from "../../types/data/DeviceData";
 
 
 export const DeviceList = () => {
     // 仮のデータを生成します（実際のデータに置き換えてください）
-    const data = new Array(20).fill(null).map((_, index) => ({
-        id: index,
-        device_id: `PC-MMAMM-${("000" + (index + 1)).slice(-3)}`,
-        device_name: `Thinkpab${("000" + (index + 1)).slice(-3)}`,
-        device_category: `ノートPC`,
-        purchase_date: `2023/04/${("00" + (index + 1)).slice(-2)}`,
-        disposal_date: `9999/99/99`
-    }));
+    const data = getDeviceData();
+
     return (
         <>
             <Box
@@ -45,7 +41,11 @@ export const DeviceList = () => {
                         <Tbody>
                             {data.map(item => (
                                 <Tr key={item.id}>
-                                    <Td border="1px solid" borderColor="gray.200"><Button size="xs">選択</Button></Td>
+                                    <Td border="1px solid" borderColor="gray.200">
+                                        <Link to={"/device/detail"} state={{ device_id: item.device_id }}>
+                                            <Button size="xs">選択</Button>
+                                        </Link>
+                                    </Td>
                                     <Td border="1px solid" borderColor="gray.200">{item.device_id}</Td>
                                     <Td border="1px solid" borderColor="gray.200">{item.device_name}</Td>
                                     <Td border="1px solid" borderColor="gray.200">{item.device_category}</Td>

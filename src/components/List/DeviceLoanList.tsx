@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
     VStack, HStack,
     Box,
@@ -6,17 +7,13 @@ import {
     , Button
 } from "@chakra-ui/react";
 
+import { getDeviceLoanData } from "../../types/data/DeviceLoanData";
 
 
 export const DeviceLoanList = () => {
     // 仮のデータを生成します（実際のデータに置き換えてください）
-    const data = new Array(20).fill(null).map((_, index) => ({
-        id: index,
-        device_name: `Thinkpab${("000" + (index + 1)).slice(-3)}`,
-        user_name: `田中太郎 ${index + 1}`,
-        rental_date: `2023/10/${("00" + index + 1).slice(-2)}`,
-        return_date: `2024/03/${("00" + index + 1).slice(-2)}`,
-    }));
+    const data = getDeviceLoanData();
+
     return (
         <>
             <Box
@@ -43,7 +40,11 @@ export const DeviceLoanList = () => {
                         <Tbody>
                             {data.map(item => (
                                 <Tr key={item.id}>
-                                    <Td border="1px solid" borderColor="gray.200"><Button size="xs">選択</Button></Td>
+                                    <Td border="1px solid" borderColor="gray.200">
+                                        <Link to={"/device-loan/detail"} state={{ device_loan_id: item.id }}>
+                                            <Button size="xs">選択</Button>
+                                        </Link>
+                                    </Td>
                                     <Td border="1px solid" borderColor="gray.200">{item.device_name}</Td>
                                     <Td border="1px solid" borderColor="gray.200">{item.user_name}</Td>
                                     <Td border="1px solid" borderColor="gray.200">{item.rental_date}</Td>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
     Box,
     HStack, VStack,
     Text,
-    Flex,
+    Input,
     Button,
 } from "@chakra-ui/react";
 
@@ -12,22 +12,14 @@ import { Header } from "../../components/Header";
 import { BackButton } from "../../components/Button/BackButton";
 import { UserData, getUserData } from "../../types/data/UserData";
 
-const page_title: string = "ユーザー詳細画面";
+const page_title: string = "ユーザー編集画面";
 interface State {
-    user_id: number;
+    user: UserData;
 }
 
-export const DetailUser = () => {
+export const EditUser = () => {
     const location = useLocation();
-    const { user_id } = location.state as State;
-    const [user, setUser] = useState<UserData>();
-
-    useEffect(() => {
-        const all_data: UserData[] = getUserData();
-        const data = all_data.find(d => d.user_id === user_id);
-        setUser(data);
-
-    }, [user_id]);
+    const { user } = location.state as State;
 
     return (
         <>
@@ -47,34 +39,29 @@ export const DetailUser = () => {
                         align="stretch"
                         maxW="60%"
                     >
-                        <Flex justify="flex-end">
-                            <Button colorScheme="red" ml="20px">削除</Button>
-                        </Flex>
                         <HStack justify="space-between">
                             <Text flex="3">社員番号</Text>
                             {user && <Text flex="4">{user.user_id}</Text>}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">氏名</Text>
-                            {user && <Text flex="4">{user.user_name}</Text>}
+                            {user && <Input flex="4" value={user.user_name} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">所属</Text>
-                            {user && <Text flex="4">{user.user_division}</Text>}
+                            {user && <Input flex="4" value={user.user_division} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">電話番号</Text>
-                            {user && <Text flex="4">{user.tel_num}</Text>}
+                            {user && <Input flex="4" value={user.tel_num} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">メールアドレス</Text>
-                            {user && <Text flex="4">{user.mail_address}</Text>}
+                            {user && <Input flex="4" value={user.mail_address} />}
                         </HStack>
                         <HStack mt="30px">
                             <BackButton />
-                            <Link to={"/user/edit"} state={{ user }}>
-                                <Button colorScheme="telegram" ml="20px">編集</Button>
-                            </Link>
+                            <Button colorScheme="telegram" ml="20px">更新</Button>
                         </HStack>
                     </VStack>
                 </Box>

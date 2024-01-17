@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
     Box,
     HStack, VStack,
@@ -14,21 +14,14 @@ import { BackButton } from "../../components/Button/BackButton";
 import { DeviceLoanData, getDeviceLoanData } from "../../types/data/DeviceLoanData";
 
 interface State {
-    device_loan_id: number;
+    deviceLoanData: DeviceLoanData;
 }
 
-const page_title: string = "貸出状況詳細画面";
+const page_title: string = "貸出状況編集画面";
 
-export const DetailDeviceLoan = () => {
+export const EditDeviceLoan = () => {
     const location = useLocation();
-    const { device_loan_id } = location.state as State;
-    const [deviceLoanData, setDeviceLoanData] = useState<DeviceLoanData>();
-
-    useEffect(() => {
-        const all_data = getDeviceLoanData();
-        const data = all_data.find(d => d.id === device_loan_id);
-        setDeviceLoanData(data);
-    }, [device_loan_id]);
+    const { deviceLoanData } = location.state as State;
 
     return (
         <>
@@ -48,16 +41,14 @@ export const DetailDeviceLoan = () => {
                         align="stretch"
                         maxW="60%"
                     >
-                        <Flex justify="flex-end">
-                            <Button colorScheme="red" ml="20px">削除</Button>
-                        </Flex>
+
                         <HStack justify="space-between">
                             <Text flex="3">貸出状況ID</Text>
                             {deviceLoanData && <Text flex="4">{deviceLoanData.id}</Text>}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">端末ID</Text>
-                            {deviceLoanData && <Text flex="4">{deviceLoanData.device_id}</Text>}
+                            {deviceLoanData && <Input flex="4" value={deviceLoanData.device_id} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">端末名称</Text>
@@ -65,7 +56,7 @@ export const DetailDeviceLoan = () => {
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">ユーザーID</Text>
-                            {deviceLoanData && <Text flex="4">{deviceLoanData.user_id}</Text>}
+                            {deviceLoanData && <Input flex="4" value={deviceLoanData.user_id} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">ユーザー名</Text>
@@ -73,25 +64,23 @@ export const DetailDeviceLoan = () => {
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">貸出日</Text>
-                            {deviceLoanData && <Text flex="4">{deviceLoanData.rental_date}</Text>}
+                            {deviceLoanData && <Input flex="4" type="date" value={deviceLoanData.rental_date} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">返却日</Text>
-                            {deviceLoanData && <Text flex="4">{deviceLoanData.return_date}</Text>}
+                            {deviceLoanData && <Input flex="4" type="date" value={deviceLoanData.return_date} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">利用目的</Text>
-                            {deviceLoanData && <Text flex="4">{deviceLoanData.usage_memo}</Text>}
+                            {deviceLoanData && <Textarea flex="4" value={deviceLoanData.usage_memo} />}
                         </HStack>
                         <HStack mt="30px">
                             <BackButton />
-                            <Link to={"/device-loan/edit"} state={{ deviceLoanData }}>
-                                <Button colorScheme="telegram" ml="20px">編集</Button>
-                            </Link>
+                            <Button colorScheme="telegram" ml="20px">更新</Button>
                         </HStack>
                     </VStack>
                 </Box>
-            </VStack >
+            </VStack>
         </>
     );
 };

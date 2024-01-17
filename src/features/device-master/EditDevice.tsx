@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
     Box,
     HStack, VStack,
     Text,
     Flex,
+    Input,
     Button,
 } from "@chakra-ui/react";
 
@@ -12,22 +13,14 @@ import { Header } from "../../components/Header";
 import { BackButton } from "../../components/Button/BackButton";
 import { DeviceData, getDeviceData } from "../../types/data/DeviceData";
 
-const page_title: string = "端末詳細画面";
+const page_title: string = "端末編集画面";
 interface State {
-    device_id: string;
+    deviceData: DeviceData;
 }
 
-export const DetailDevice = () => {
+export const EditDevice = () => {
     const location = useLocation();
-    const { device_id } = location.state as State;
-    const [deviceData, setDeviceData] = useState<DeviceData>();
-
-    useEffect(() => {
-        const all_data = getDeviceData();
-        const data = all_data.find(d => d.device_id === device_id);
-        setDeviceData(data);
-    }, [device_id]);
-
+    const { deviceData } = location.state as State;
 
     return (
         <>
@@ -47,34 +40,30 @@ export const DetailDevice = () => {
                         align="stretch"
                         maxW="60%"
                     >
-                        <Flex justify="flex-end">
-                            <Button colorScheme="red" ml="20px">削除</Button>
-                        </Flex>
+
                         <HStack justify="space-between">
                             <Text flex="3">端末ID</Text>
                             {deviceData && <Text flex="4">{deviceData.device_id}</Text>}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">端末名称</Text>
-                            {deviceData && <Text flex="4">{deviceData.device_name}</Text>}
+                            {deviceData && <Input flex="4" value={deviceData.device_name} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">端末区分</Text>
-                            {deviceData && <Text flex="4">{deviceData.device_category}</Text>}
+                            {deviceData && <Input flex="4" value={deviceData.device_category} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">購入日</Text>
-                            {deviceData && <Text flex="4">{deviceData.purchase_date}</Text>}
+                            {deviceData && <Input flex="4" type="date" value={deviceData.purchase_date} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">廃棄日</Text>
-                            {deviceData && <Text flex="4">{deviceData.disposal_date}</Text>}
+                            {deviceData && <Input flex="4" type="date" value={deviceData.disposal_date} />}
                         </HStack>
                         <HStack mt="30px">
                             <BackButton />
-                            <Link to={"/device/edit"} state={{ deviceData }}>
-                                <Button colorScheme="telegram" ml="20px">編集</Button>
-                            </Link>
+                            <Button colorScheme="telegram" ml="20px">更新</Button>
                         </HStack>
                     </VStack>
                 </Box>

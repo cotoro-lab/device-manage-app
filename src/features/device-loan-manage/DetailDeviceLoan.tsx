@@ -5,6 +5,7 @@ import {
     HStack, VStack,
     Text,
     Flex,
+    Spacer,
     Input, Textarea,
     Button,
 } from "@chakra-ui/react";
@@ -48,9 +49,7 @@ export const DetailDeviceLoan = () => {
                         align="stretch"
                         maxW="60%"
                     >
-                        <Flex justify="flex-end">
-                            <Button colorScheme="red" ml="20px">削除</Button>
-                        </Flex>
+
                         <HStack justify="space-between">
                             <Text flex="3">貸出状況ID</Text>
                             {deviceLoanData && <Text flex="4">{deviceLoanData.id}</Text>}
@@ -88,6 +87,10 @@ export const DetailDeviceLoan = () => {
                             <Link to={"/device-loan/edit"} state={{ deviceLoanData }}>
                                 <Button colorScheme="telegram" ml="20px">編集</Button>
                             </Link>
+                            <Spacer />
+                            <Flex justify="flex-end">
+                                <Button colorScheme="red" ml="20px">削除</Button>
+                            </Flex>
                         </HStack>
                     </VStack>
                 </Box>

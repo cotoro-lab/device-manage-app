@@ -5,6 +5,7 @@ import {
     Text,
     Input,
     Button,
+    Flex,
 } from "@chakra-ui/react";
 
 import { Header } from "../../components/Header";

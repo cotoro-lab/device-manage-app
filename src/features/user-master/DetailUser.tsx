@@ -4,7 +4,7 @@ import {
     Box,
     HStack, VStack,
     Text,
-    Flex,
+    Flex, Spacer,
     Button,
 } from "@chakra-ui/react";
 
@@ -47,9 +47,6 @@ export const DetailUser = () => {
                         align="stretch"
                         maxW="60%"
                     >
-                        <Flex justify="flex-end">
-                            <Button colorScheme="red" ml="20px">削除</Button>
-                        </Flex>
                         <HStack justify="space-between">
                             <Text flex="3">社員番号</Text>
                             {user && <Text flex="4">{user.user_id}</Text>}
@@ -75,6 +72,10 @@ export const DetailUser = () => {
                             <Link to={"/user/edit"} state={{ user }}>
                                 <Button colorScheme="telegram" ml="20px">編集</Button>
                             </Link>
+                            <Spacer />
+                            <Flex justify="end" mr="50px">
+                                <Button colorScheme="red" mr="50px">削除</Button>
+                            </Flex>
                         </HStack>
                     </VStack>
                 </Box>

@@ -5,6 +5,7 @@ import {
     HStack, VStack,
     Text,
     Flex,
+    Spacer,
     Button,
 } from "@chakra-ui/react";
 
@@ -47,9 +48,7 @@ export const DetailDevice = () => {
                         align="stretch"
                         maxW="60%"
                     >
-                        <Flex justify="flex-end">
-                            <Button colorScheme="red" ml="20px">削除</Button>
-                        </Flex>
+
                         <HStack justify="space-between">
                             <Text flex="3">端末ID</Text>
                             {deviceData && <Text flex="4">{deviceData.device_id}</Text>}
@@ -75,6 +74,10 @@ export const DetailDevice = () => {
                             <Link to={"/device/edit"} state={{ deviceData }}>
                                 <Button colorScheme="telegram" ml="20px">編集</Button>
                             </Link>
+                            <Spacer />
+                            <Flex justify="end">
+                                <Button colorScheme="red" mr="50px">削除</Button>
+                            </Flex>
                         </HStack>
                     </VStack>
                 </Box>

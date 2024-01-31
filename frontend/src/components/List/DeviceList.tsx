@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 
 import { getDeviceData } from "../../types/data/DeviceData";
-
+import { formatDatetoStr } from "../../utils/dataUtils";
 
 export const DeviceList = () => {
     // 仮のデータを生成します（実際のデータに置き換えてください）
@@ -49,8 +49,8 @@ export const DeviceList = () => {
                                     <Td border="1px solid" borderColor="gray.200">{item.device_id}</Td>
                                     <Td border="1px solid" borderColor="gray.200">{item.device_name}</Td>
                                     <Td border="1px solid" borderColor="gray.200">{item.device_category}</Td>
-                                    <Td border="1px solid" borderColor="gray.200">{item.purchase_date}</Td>
-                                    <Td border="1px solid" borderColor="gray.200">{item.disposal_date}</Td>
+                                    <Td border="1px solid" borderColor="gray.200">{formatDatetoStr(item.purchase_date, "/")}</Td>
+                                    <Td border="1px solid" borderColor="gray.200">{formatDatetoStr(item.disposal_date, "/")}</Td>
                                 </Tr>
                             ))}
                         </Tbody>

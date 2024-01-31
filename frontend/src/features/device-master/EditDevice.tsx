@@ -12,6 +12,7 @@ import {
 import { Header } from "../../components/Header";
 import { BackButton } from "../../components/Button/BackButton";
 import { DeviceData, getDeviceData } from "../../types/data/DeviceData";
+import { formatDatetoStr } from "../../utils/dataUtils";
 
 const page_title: string = "端末編集画面";
 interface State {
@@ -55,11 +56,11 @@ export const EditDevice = () => {
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">購入日</Text>
-                            {deviceData && <Input flex="4" type="date" value={deviceData.purchase_date} />}
+                            {deviceData && <Input flex="4" type="date" value={formatDatetoStr(deviceData.purchase_date, "-")} />}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">廃棄日</Text>
-                            {deviceData && <Input flex="4" type="date" value={deviceData.disposal_date} />}
+                            {deviceData && <Input flex="4" type="date" value={formatDatetoStr(deviceData.disposal_date, "-")} />}
                         </HStack>
                         <HStack mt="30px">
                             <BackButton />

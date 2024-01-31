@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 
 import { getDeviceLoanData } from "../../types/data/DeviceLoanData";
+import { formatDatetoStr } from "../../utils/dataUtils";
 
 
 export const DeviceLoanList = () => {
@@ -47,8 +48,8 @@ export const DeviceLoanList = () => {
                                     </Td>
                                     <Td border="1px solid" borderColor="gray.200">{item.device_name}</Td>
                                     <Td border="1px solid" borderColor="gray.200">{item.user_name}</Td>
-                                    <Td border="1px solid" borderColor="gray.200">{item.rental_date}</Td>
-                                    <Td border="1px solid" borderColor="gray.200">{item.return_date}</Td>
+                                    <Td border="1px solid" borderColor="gray.200">{formatDatetoStr(item.rental_date, "/")}</Td>
+                                    <Td border="1px solid" borderColor="gray.200">{formatDatetoStr(item.return_date, "/")}</Td>
                                 </Tr>
                             ))}
                         </Tbody>

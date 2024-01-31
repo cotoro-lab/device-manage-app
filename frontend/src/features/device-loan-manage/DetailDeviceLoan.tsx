@@ -13,6 +13,7 @@ import {
 import { Header } from "../../components/Header";
 import { BackButton } from "../../components/Button/BackButton";
 import { DeviceLoanData, getDeviceLoanData } from "../../types/data/DeviceLoanData";
+import { formatDatetoStr } from "../../utils/dataUtils";
 
 interface State {
     device_loan_id: number;
@@ -72,11 +73,11 @@ export const DetailDeviceLoan = () => {
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">貸出日</Text>
-                            {deviceLoanData && <Text flex="4">{deviceLoanData.rental_date}</Text>}
+                            {deviceLoanData && <Text flex="4">{formatDatetoStr(deviceLoanData.rental_date, "/")}</Text>}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">返却日</Text>
-                            {deviceLoanData && <Text flex="4">{deviceLoanData.return_date}</Text>}
+                            {deviceLoanData && <Text flex="4">{formatDatetoStr(deviceLoanData.return_date, "/")}</Text>}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">利用目的</Text>

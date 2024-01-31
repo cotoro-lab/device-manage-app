@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
     HStack, VStack
@@ -10,6 +11,14 @@ import {
 import AppImage from "./assets/app_image.png";
 
 const App = () => {
+    const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        fetch("http://localhost:5000/")
+            .then((res) => res.text())
+            .then((data) => setMessage(data));
+    }, []);
+
     return (
         <>
             <div className="App">
@@ -20,6 +29,7 @@ const App = () => {
                                 <img src={AppImage} />
                             </Box>
                             <Text as="b" fontSize="2xl" color="blue.800">Device Magement App</Text>
+                            <Text as="b" fontSize="2xl" color="blue.800">{message}</Text>
                             <Link to="/device-loan/list">
                                 <Button mt={5} width={250} bg="gray.100" color="blue.800">
                                     貸出状況管理

@@ -12,11 +12,16 @@ import AppImage from "./assets/app_image.png";
 
 const App = () => {
     const [message, setMessage] = useState("");
+    const [message2, setMessage2] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:5000/")
             .then((res) => res.text())
             .then((data) => setMessage(data));
+
+        fetch("http://localhost:5000/night")
+            .then((res) => res.text())
+            .then((data) => setMessage2(data));
     }, []);
 
     return (
@@ -30,6 +35,7 @@ const App = () => {
                             </Box>
                             <Text as="b" fontSize="2xl" color="blue.800">Device Magement App</Text>
                             <Text as="b" fontSize="2xl" color="blue.800">{message}</Text>
+                            <Text as="b" fontSize="xl" color="blue.800">{message2}</Text>
                             <Link to="/device-loan/list">
                                 <Button mt={5} width={250} bg="gray.100" color="blue.800">
                                     貸出状況管理

@@ -12,6 +12,7 @@ import {
 import { Header } from "../../components/Header";
 import { BackButton } from "../../components/Button/BackButton";
 import { DeviceData, getDeviceData } from "../../types/data/DeviceData";
+import { formatDatetoStr } from "../../utils/dataUtils";
 
 const page_title: string = "端末詳細画面";
 interface State {
@@ -63,11 +64,11 @@ export const DetailDevice = () => {
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">購入日</Text>
-                            {deviceData && <Text flex="4">{deviceData.purchase_date}</Text>}
+                            {deviceData && <Text flex="4">{formatDatetoStr(deviceData.purchase_date, "/")}</Text>}
                         </HStack>
                         <HStack justify="space-between">
                             <Text flex="3">廃棄日</Text>
-                            {deviceData && <Text flex="4">{deviceData.disposal_date}</Text>}
+                            {deviceData && <Text flex="4">{formatDatetoStr(deviceData.disposal_date, "/")}</Text>}
                         </HStack>
                         <HStack mt="30px">
                             <BackButton />

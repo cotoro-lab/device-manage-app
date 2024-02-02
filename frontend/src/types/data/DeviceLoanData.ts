@@ -5,8 +5,8 @@ export type DeviceLoanData = {
     device_name: string;
     user_id: number;
     user_name: string;
-    rental_date: string;
-    return_date: string;
+    rental_date: Date;
+    return_date: Date | null;
     usage_memo: string;
 };
 
@@ -17,8 +17,8 @@ function getDeviceLoanData(): DeviceLoanData[] {
         device_name: `Thinkpab${("000" + (index + 1)).slice(-3)}`,
         user_id: 10002300000 + index + 1,
         user_name: `田中太郎 ${index + 1}`,
-        rental_date: `2023/10/${("00" + index + 1).slice(-2)}`,
-        return_date: `2024/03/${("00" + index + 1).slice(-2)}`,
+        rental_date: new Date(`2023-10-${("00" + (index + 1)).slice(-2)}`),
+        return_date: new Date(`2024-03-${("00" + (index + 1)).slice(-2)}`),
         usage_memo: `利用目的_${("00" + index + 1).slice(-2)}`,
     }));
 };

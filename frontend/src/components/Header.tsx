@@ -24,12 +24,12 @@ export const Header = (props: Props) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
         <>
-            <Box h='20%' bg='gray.300'>
+            <Box h='20%' bg='gray.200'>
                 <HStack>
                     <Button onClick={onOpen} bg='clear'>
                         <HamburgerIcon />
                     </Button>
-                    <Text fontSize='xl' marginLeft='10px'>{props.title}</Text>
+                    <Text as="b" fontSize='xl' marginLeft='10px'>{props.title}</Text>
                 </HStack>
             </Box>
             <Drawer
@@ -50,6 +50,7 @@ export const Header = (props: Props) => {
                             spacing={3}
                             align='stretch'
                         >
+                            <Link to="/">Top</Link>
                             <Link to="/device-loan/list">貸出状況管理画面</Link>
                             <Link to="/device/list">端末管理画面</Link>
                             <Link to="/user/list">ユーザー管理画面</Link>

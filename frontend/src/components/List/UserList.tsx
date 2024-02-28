@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
     VStack, HStack,
@@ -7,13 +7,19 @@ import {
     , Button
 } from "@chakra-ui/react";
 
-import { getUserData } from "../../types/data/UserData";
+import { getUserData, UserData } from "../../types/data/UserData";
 
 
 export const UserList = () => {
     const color = "gray.200";
     // 仮のデータを生成します（実際のデータに置き換えてください）
-    const data = getUserData();
+    const [data, setData] = useState([]);
+    // const data = getUserData();
+    useEffect(() => {
+        fetch("http://localhost:5000/user_data_service/select_list")
+            .then((res) => res.text())
+            .then((data) => setData(data));
+    }, []);
 
     return (
         <>
